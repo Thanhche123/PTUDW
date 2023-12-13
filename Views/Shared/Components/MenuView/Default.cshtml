@@ -1,0 +1,144 @@
+﻿@model IList<Category>
+@{
+    Layout = null;
+} 
+<!-- Main Slider Start -->
+<div class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <nav class="navbar bg-light">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sản phẩm mới</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sản phẩm bán chạy</a>
+                        </li>
+                        @foreach (var m in Model.Where(m => m.Levels == 1).OrderBy(n => n.MenuOrder))
+                        {
+                            var Pid = m.CategoryID;
+                            var Sm = Model.Where(p => p.ParentID == Pid).OrderBy(p => p.MenuOrder).ToList();
+                            @if (Sm.Count == 0)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">@m.CategoryName</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <div class="nav-item dropdown">
+                                        <a href="#" class="nav-link" data-toggle="dropdown">@m.CategoryName<i class="fa fa-angle-down "></i></a>
+                                        <div class="dropdown-menu">
+                                            @foreach (var smn in Sm)
+                                            {
+                                                <a href="#" class="dropdown-item">@smn.CategoryName</a>
+                                            }
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        }
+
+                        <!--<li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-shopping-bag"></i>Bán chạy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-plus-square"></i>Sản phẩm mới</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link" data-toggle="dropdown"><i class="fa fa-home"></i>Quần<i class="fa fa-angle-down "></i></a>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Quần vải</a>
+                                    <a href="#" class="dropdown-item">Quần jeans</a>
+                                    <a href="#" class="dropdown-item">Quần ngắn</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link" data-toggle="dropdown"><i class="fa fa-home"></i>Chân váy<i class="fa fa-angle-down "></i></a>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Chân váy ngắn</a>
+                                    <a href="#" class="dropdown-item">Chân váy dài</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link" data-toggle="dropdown"><i class="fa fa-home"></i>Váy<i class="fa fa-angle-down "></i></a>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Váy ngắn</a>
+                                    <a href="#" class="dropdown-item">Váy dài</a>
+                                </div>
+                            </div>
+                        </li>-->
+                        <!--<li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-female"></i>Fashion & Beauty</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-child"></i>Kids & Babies Clothes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Men & Women Clothes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-mobile-alt"></i>Gadgets & Accessories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-microchip"></i>Electronics & Accessories</a>
+                        </li>-->
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-6">
+                <div class="header-slider normal-slider">
+                    <div class="header-slider-item">
+                        <img src="~/img/slider-1.jpg" alt="Slider Image" />
+                        <div class="header-slider-caption">
+                            <p>Some text goes here that describes the image</p>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="header-slider-item">
+                        <img src="~/img/slider-2.jpg" alt="Slider Image" />
+                        <div class="header-slider-caption">
+                            <p>Some text goes here that describes the image</p>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                        </div>
+                    </div>
+                    <div class="header-slider-item">
+                        <img src="~/img/slider-3.jpg" alt="Slider Image" />
+                        <div class="header-slider-caption">
+                            <p>Some text goes here that describes the image</p>
+                            <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="header-img">
+                    <div class="img-item">
+                        <img src="~/img/category-1.jpg" />
+                        <a class="img-text" href="">
+                            <p>Some text goes here that describes the image</p>
+                        </a>
+                    </div>
+                    <div class="img-item">
+                        <img src="~/img/category-2.jpg" />
+                        <a class="img-text" href="">
+                            <p>Some text goes here that describes the image</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Slider End -->

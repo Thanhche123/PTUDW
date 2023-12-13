@@ -1,0 +1,91 @@
+﻿@model doanw.Models.Chitietsp
+@{
+	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<main id="main" class="main">
+	<div class="pagetitle">
+		<h2>Xác nhận thêm sản phẩm</h2>
+	</div>
+	<div class="container shadow p-5">
+		<div class="row pb-2">
+			<h2> Thêm chi tiết sản phẩm</h2>
+		</div>
+		
+		<form method="post">
+			<div asp-validation-summary="All"></div>
+		<div class="form-row">
+			<!--<div class="form-group col-md-6">
+				<label asp-for="ProductID">ProductID</label>
+				<input type="text" class="form-control mb-3" asp-for="ProductID" placeholder="Enter Product" />
+				<span asp-validation-for="ProductID" class="alert-danger"></span>
+			</div>-->
+			<div class="form-group col-md-6">
+					<label asp-for="ProductID">Sản phẩm</label>
+					<select asp-for="ProductID" class="form-control" asp-items="@(new SelectList(ViewBag.mnList, "Value", "Text"))">
+					</select>
+					<span asp-validation-for="ProductID" class="alert-danger"></span>
+				</div>
+
+			<!--<div class="form-row">
+				<div class="form-group col-md-6">
+					<label asp-for="SizeID">Size</label>
+					<input type="text" class="form-control mb-3" asp-for="SizeID" placeholder="Enter Size" />
+					<span asp-validation-for="SizeID" class="alert-danger"></span>
+				</div>-->
+			
+				<div class="form-group col-md-6">
+					<label asp-for="SizeID">Kích thước</label>
+					<select asp-for="SizeID" class="form-control" asp-items="@(new SelectList(ViewBag.mnList1, "Value", "Text"))">
+					</select>
+					<span asp-validation-for="SizeID" class="alert-danger"></span>
+				</div>
+			
+				<!--<div class="form-group col-md-6">
+					<label asp-for="ColorID">Color</label>
+					<input type="text" class="form-control mb-3" asp-for="ColorID" placeholder="Enter Color" />
+					<span asp-validation-for="ColorID" class="alert-danger"></span>
+				</div>-->
+				<div class="form-group col-md-6">
+					<label asp-for="ColorID">Màu sắc</label>
+					<select asp-for="ColorID" class="form-control" asp-items="@(new SelectList(ViewBag.mnList2, "Value", "Text"))">
+					</select>
+					<span asp-validation-for="ColorID" class="alert-danger"></span>
+				</div>
+
+				<div class="from-group col-md-12">
+					<label class="control-lable">Images</label>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<button class="btn btn-success" type="button" onclick="openDialog()">Choose a pic</button>
+						</div>
+						<input type="text" class="form-control" asp-for="LinkImage" id="file_input" aria-describedby="button-addon2">
+					</div>
+				</div>
+			
+				<div class="form-group col-md-6">
+					<label asp-for="Price">Price</label>
+					<input type="text" class="form-control mb-3" asp-for="Price" placeholder="Enter Price" />
+					<span asp-validation-for="Price" class="alert-danger"></span>
+				</div>
+
+			
+				<div class="form-group col-md-6">
+					<label asp-for="Quantity">Quantity</label>
+					<input type="text" class="form-control mb-3" asp-for="Quantity" placeholder="Enter Quantity" />
+					<span asp-validation-for="Quantity" class="alert-danger"></span>
+				</div>
+
+			</div>
+
+			<button type="submit" class="btn btn-lg btn-primary p-2"><i class="bi bi-file-plus-fill"></i>Lưu</button>
+			<a asp-controller="ProductDetails" asp-action="Index" class="btn btn-lg btn-warning p-2">Quay lại</a>
+		</form>
+				
+		
+	</div>
+</main>
+@{
+	var summernote = new doanw.Areas.Admin.Models.Summernote("#Contents");
+
+}
+<partial name="_Summernote" model="summernote" />

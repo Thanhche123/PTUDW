@@ -1,0 +1,91 @@
+﻿@using doanw.Utilities;
+@model doanw.Models.Users
+<div class="my-account">
+
+ <form method="post" asp-action="Create">
+			<div asp-validation-summary="All"></div>
+    <div class="container-fluid">
+            <div class="row justify-content-center">
+      
+        <div class="col-md-6">
+            <div class="tab-content">
+            <h4>Sửa thông tin cá nhân</h4>
+            <div class="form-row">
+                <input type="text" class="form-control mb-3" asp-for="UserID" type="hidden" />
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="UserName">Tên tài khoản</label>
+                <input class="form-control" type="text" asp-for="UserName" placeholder="Last Name">
+                <span asp-validation-for="UserName" class="alert-danger"></span>
+            </div>
+            
+            <div class="col-md-6">
+                <label asp-for="Phone">Phone</label>
+                <input class="form-control" type="text" asp-for="Phone" placeholder="Phone">
+                <span asp-validation-for="Phone" class="alert-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Email">Email</label>
+                <input class="form-control" type="text" asp-for="Email" placeholder="Email">
+                <span asp-validation-for="Email" class="alert-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                <label asp-for="Address">Address</label>
+                <input class="form-control" type="text" asp-for="Address" placeholder="Address">
+                <span asp-validation-for="Address" class="alert-danger"></span>
+            </div>
+
+            <div class="col-md-12">
+                <button type="submit" class="btn">Update Account</button>
+
+                <br><br>
+            </div>
+
+            </div>
+        </div>
+        </div>
+   </div>
+</form>
+</div>
+<!--<div class="my-account">
+    <div class="container-fluid">
+        <form method="post" asp-action="Edit">
+			<div asp-validation-summary="All"></div>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="tab-content">
+                    <div class="tab-pane fade" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
+                        <h4>Account Details</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" asp-for="UserName" placeholder="Last Name">
+                                <span asp-validation-for="UserName" class="alert-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" asp-for="Phone" placeholder="Mobile">
+                                <span asp-validation-for="Phone" class="alert-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" asp-for="Email" placeholder="Email">
+                                <span asp-validation-for="Email" class="alert-danger"></span>
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" asp-for="Address" placeholder="Address">
+                                <span asp-validation-for="Address" class="alert-danger"></span>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn">Update Account</button>
+                               
+                                <br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>-->
